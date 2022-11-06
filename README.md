@@ -4,7 +4,7 @@
 
 **请勿使用于任何非法用途，由此产生的后果自行承担。**
 
-**今天我会整理开机自启动、登陆自启动、定时执行任务三种权限维持的免杀方法。**
+**开机自启动、登陆自启动、定时执行任务三种权限维持的免杀方法。**
 
 思路很简单，参考微软官方的文档写的dll，之前尝试过exe不免杀，但是dll免杀，直接编译即可。
 
@@ -29,6 +29,19 @@ rundll32 Dll_task_login,DllMain Administrator S-1-5-32-544 calc.exe
 SID可以从whoami /all中当前所在组的别名中来找到
 
 ![1667727254525](https://user-images.githubusercontent.com/48757788/200163656-fad69c20-b056-41e2-aa30-2d2f0e000aa9.jpg)
+
+## Dll_task_time
+
+定时执行计划任务使用Dll_task_time，以SYSTEM权限执行计划任务，需要输入间隔的分钟数以及计划任务的启动程序：
+
+以每隔一分钟执行一次弹出计算器为例，同时请注意只有当启动程序退出之后才会再次执行计划任务，不会每隔一分钟就有一个新的会话上线服务器
+
+rundll32 Dll_task_time,DllMain 1 calc.exe
+
+![1667734784929](https://user-images.githubusercontent.com/48757788/200168733-4d4bc542-6058-453f-9ab9-7ae6d1208e99.jpg)
+
+
+
 
 
 
