@@ -12,7 +12,7 @@
 
 ## Dll_task_boot
 
-开机启动使用Dll_task_boot，以SYSTEM权限执行计划任务，filename为计划任务的启动程序，通过AttachConsole将输出转到父进程控制台。进而获取到dll的输出：
+开机启动使用Dll_task_boot，以SYSTEM权限执行计划任务，filename为计划任务的启动程序，通过AttachConsole将输出转到父进程控制台，进而获取到dll的输出：
 
 rundll32 Dll_task_boot,DllMain filename
 
