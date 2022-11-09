@@ -10,13 +10,15 @@
 
 若想修改计划任务的名字，请修改源码中wszTaskName，这里为了减少输入项暂时未让用户输入计划任务名字。
 
-如果想不落地执行可以参考[该项目](https://github.com/killeven/DllToShellCode)将dll转为shellcode并注入。
+**师傅们也可以修改为反射型dll，然后不落地注入。**
+
+**也可以参考[该项目](https://github.com/killeven/DllToShellCode)将dll转为shellcode并注入实现不落地执行。**
 
 通过AttachConsole将输出转到父进程控制台，进而获取到dll的输出。
 
 ## Dll_task_boot
 
-开机启动使用Dll_task_boot，以SYSTEM权限执行计划任务，filename为计划任务的启动程序：
+开机启动使用Dll_task_boot，以SYSTEM权限执行计划任务，filename为计划任务的启动程序的绝对路径：
 
 rundll32 Dll_task_boot,DllMain filename
 
@@ -28,7 +30,7 @@ rundll32 Dll_task_boot,DllMain filename
 
 以管理员用户为例
 
-rundll32 Dll_task_login,DllMain Administrator S-1-5-32-544 calc.exe
+rundll32 Dll_task_login,DllMain Administrator S-1-5-32-544 filename
 
 SID可以从whoami /all中当前所在组的别名中来找到
 
@@ -40,7 +42,7 @@ SID可以从whoami /all中当前所在组的别名中来找到
 
 以每隔一分钟执行一次弹出计算器为例，同时请注意只有当启动程序退出之后才会再次执行计划任务，不会每隔一分钟就有一个新的会话上线服务器
 
-rundll32 Dll_task_time,DllMain 1 calc.exe
+rundll32 Dll_task_time,DllMain 1 filename
 
 ![1667734784929](https://user-images.githubusercontent.com/48757788/200168733-4d4bc542-6058-453f-9ab9-7ae6d1208e99.jpg)
 
