@@ -73,9 +73,9 @@ int login(HANDLE han, LPWSTR time, LPWSTR filename)
 
     hello = pDailyTrigger->put_Id(_bstr_t(L"Trigger1"));
 
-    hello = pDailyTrigger->put_StartBoundary(_bstr_t(L"2005-01-01T00:00:00"));
+    hello = pDailyTrigger->put_StartBoundary(_bstr_t("2005-01-01T00:00:00"));
 
-    hello = pDailyTrigger->put_EndBoundary(_bstr_t(L"2037-05-02T12:05:00"));
+    hello = pDailyTrigger->put_EndBoundary(_bstr_t("2035-05-01T12:05:00"));
 
     hello = pDailyTrigger->put_DaysInterval((short)1);
 
